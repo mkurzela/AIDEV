@@ -12,6 +12,10 @@ A TypeScript application for managing and analyzing user connections using a Neo
 
 A TypeScript application that helps find a person's current location by analyzing a note and querying various APIs to track their movements. It demonstrates how to use APIs and iterative search processes to locate individuals.
 
+### MK_pics
+
+A TypeScript application for processing and analyzing images using OpenAI's vision capabilities. It demonstrates how to use AI to process, analyze, and extract information from images, including batch processing and caching features.
+
 ## Getting Started
 
 Each project has its own README with specific setup and usage instructions. Navigate to the respective subfolder for more details.
@@ -21,7 +25,7 @@ Each project has its own README with specific setup and usage instructions. Navi
 - [Bun](https://bun.sh/) (for running and managing the projects)
 - [Node.js](https://nodejs.org/) (for TypeScript and some dependencies)
 - [Neo4j](https://neo4j.com/) (for MK_graph project)
-- OpenAI API key
+- OpenAI API key (with vision model access for MK_pics)
 - API key for the remote data source
 
 ## License
