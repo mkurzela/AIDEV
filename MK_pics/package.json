@@ -1,0 +1,23 @@
+{
+  "name": "photo-processing-app",
+  "version": "1.0.0",
+  "description": "Photo processing application for analyzing and describing photos",
+  "main": "photoApp.ts",
+  "scripts": {
+    "start": "ts-node photoApp.ts",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "openai": "^4.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
+  }
+}
