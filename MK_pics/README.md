@@ -90,17 +90,21 @@ A TypeScript application for processing and analyzing images using OpenAI's visi
 
 ## Usage
 
-Run the application using Bun:
+### Running the Application
 
 ```bash
 bun run photoApp.ts
 ```
 
-Clear the cache (if needed):
+### Managing Cache
+
+The application uses a caching system to store processed images and checkpoints. To clear the cache:
 
 ```bash
 bun run photoApp.ts --clear-cache
 ```
+
+This will remove all cached images and checkpoints, allowing you to start fresh.
 
 ## Project Structure
 
