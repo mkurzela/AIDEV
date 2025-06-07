@@ -26,11 +26,20 @@ Each project has its own README with specific setup and usage instructions. Navi
 
 ## Prerequisites
 
+**For TypeScript projects (MK_graph, MK_query, MK_pics):**
+
 - [Bun](https://bun.sh/) (for running and managing the TypeScript projects)
 - [Node.js](https://nodejs.org/) (for TypeScript and some dependencies)
 - [Neo4j](https://neo4j.com/) (for MK_graph project)
-- OpenAI API key (with vision model access for MK_pics and fine-tuning for MK_finetune)
+- OpenAI API key (with vision model access for MK_pics)
 - API key for the remote data source
+
+**For Python project (MK_finetune):**
+
+- Python 3.6 or higher
+- pip (Python package manager)
+- OpenAI API key (with fine-tuning access)
+- API key for the external reporting endpoint
 
 ## License
 
