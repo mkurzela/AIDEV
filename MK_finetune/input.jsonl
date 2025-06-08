@@ -1,0 +1,10 @@
+{"messages": [{"role": "system", "content": "validate data"}, {"role": "user", "content": "01=kanto,saka,brunn"}]}
+{"messages": [{"role": "system", "content": "validate data"}, {"role": "user", "content": "02=kezka,barru,asal"}]}
+{"messages": [{"role": "system", "content": "validate data"}, {"role": "user", "content": "03=dwylo,blodau,cerdd"}]}
+{"messages": [{"role": "system", "content": "validate data"}, {"role": "user", "content": "04=kutsu,gato,madarak"}]}
+{"messages": [{"role": "system", "content": "validate data"}, {"role": "user", "content": "05=enamorar,bertan,tycio"}]}
+{"messages": [{"role": "system", "content": "validate data"}, {"role": "user", "content": "06=ezkutatu,rejt,ocultar"}]}
+{"messages": [{"role": "system", "content": "validate data"}, {"role": "user", "content": "07=selymes,sedoso,silkkinen"}]}
+{"messages": [{"role": "system", "content": "validate data"}, {"role": "user", "content": "08=kynsien,varvas,hiusten"}]}
+{"messages": [{"role": "system", "content": "validate data"}, {"role": "user", "content": "09=saudade,honvágy,kaipaus"}]}
+{"messages": [{"role": "system", "content": "validate data"}, {"role": "user", "content": "10=masnach,lledr,meddyg"}]}
