@@ -1,0 +1,22 @@
+# Ignore storage directory containing crawled web pages
+storage/
+
+# Ignore debug HTML files
+debug_html/
+
+# Ignore SQLite database
+webpages.db
+
+# Node.js
+node_modules/
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db 
