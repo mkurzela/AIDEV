@@ -19,6 +19,12 @@ The application uses a 4x4 map where each field contains a description in Polish
 - Rows and columns are numbered 0-3
 - Each field contains a description of the terrain/obstacle in Polish
 
+## Map Visualization
+
+Below is the map that represents the landing field grid. The service processes instructions relative to this grid layout:
+
+![Landing Field Map](mapa_s04e04.png)
+
 ## Movement Instructions
 
 The application accepts natural language instructions in both English and Polish. Here are the key movement rules:
