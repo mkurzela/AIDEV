@@ -1,0 +1,21 @@
+{
+  "task": "phone",
+  "apikey": "aa461d66-434b-41cc-99df-309d9310e52d",
+  "answer": {
+    "01": "Samuel",
+    "02": "https://rafal.ag3nts.org/b46c3",
+    "03": "nauczyciel",
+    "04": "Samuel i Barbara",
+    "05": "7f9d041d747ae3d3ff389242fae6c723",
+    "06": "Aleksander"
+  }
+}
+
+
+05 taken from:
+
+POST https://rafal.ag3nts.org/b46c3
+
+    {
+    "password": "NONOMNISMORIAR"
+    }
