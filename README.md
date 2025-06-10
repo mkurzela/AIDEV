@@ -28,6 +28,10 @@ A TypeScript application for processing and analyzing images using OpenAI's visi
 
 A Python project for fine-tuning GPT models using OpenAI's API. It includes scripts for processing data, running fine-tuning jobs, and validating/reporting results to an external API. See the `MK_finetune/README.md` for details and usage instructions.
 
+### MK_gps
+
+A TypeScript application for GPS tracking, utilizing OpenAI and various APIs to track user locations based on their user IDs or places.
+
 ## Getting Started
 
 Each project has its own README with specific setup and usage instructions. Navigate to the respective subfolder for more details.
