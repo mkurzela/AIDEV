@@ -1,6 +1,6 @@
 {
   "task": "phone",
-  "apikey": "aa461d66-434b-41cc-99df-309d9310e52d",
+  "apikey": "<API_KEY>",
   "answer": {
     "01": "Samuel",
     "02": "https://rafal.ag3nts.org/b46c3",
