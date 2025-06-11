@@ -22,7 +22,7 @@ export class Agent {
     this.webService = new WebService();
     this.openAIService = new OpenAIService();
     this.knowledgeBaseService = new KnowledgeBaseService();
-    this.source1ContextPath = path.join(__dirname, "../../source1_context.md");
+    this.source1ContextPath = path.join(__dirname, "../source1_context.md");
 
     // Get API key from environment variables
     const apiKey = process.env.API_KEY;
