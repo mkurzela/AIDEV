@@ -32,6 +32,35 @@ A Python project for fine-tuning GPT models using OpenAI's API. It includes scri
 
 A TypeScript application for GPS tracking, utilizing OpenAI and various APIs to track user locations based on their user IDs or places.
 
+### MK_fast
+
+A fast learning agentic system designed to answer questions by building and maintaining a knowledge base from multiple sources. The system operates in two phases: learning and answering, with a focus on performance and accuracy.
+
+Key features:
+
+- Two-phase operation (learning and answering)
+- Parallel processing for better performance
+- Persistent knowledge base
+- Static context caching
+- Automatic error handling
+- Performance optimized for sub-6-second response times
+
+[More details](./MK_fast/README.md)
+
+### MK_agent
+
+An agentic system focused on learning and answering questions using a knowledge base. The system is designed to handle multiple sources of information and provide accurate answers in a timely manner.
+
+Key features:
+
+- Learning phase for building knowledge base
+- Answering phase for quick responses
+- Support for multiple data sources
+- Efficient knowledge base management
+- Polish language support
+
+[More details](./MK_agent/README.md)
+
 ## Getting Started
 
 Each project has its own README with specific setup and usage instructions. Navigate to the respective subfolder for more details.
@@ -52,3 +81,7 @@ Each project has its own README with specific setup and usage instructions. Navi
 - pip (Python package manager)
 - OpenAI API key (with fine-tuning access)
 - API key for the external reporting endpoint
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
