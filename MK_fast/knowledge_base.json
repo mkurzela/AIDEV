@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "question": "Kto jest autorem \"Zbrodni i kary\"?",
+      "answer": "Fiodor Dostojewski."
+    },
+    {
+      "question": "Jak nazywa się najstarszy hymn Polski?",
+      "answer": "\"Najstarszy hymn Polski nosi nazwę 'Bogurodzica'.\""
+    },
+    {
+      "question": "Z jakim miastem kojarzy się Mikołaj Kopernik?",
+      "answer": "Toruń."
+    },
+    {
+      "question": "Kiedy podpisano konstytucję 3 maja?",
+      "answer": "Konstytucję 3 maja podpisano w 1791 roku."
+    },
+    {
+      "question": "Data bitwy pod Grunwaldem",
+      "answer": "15 lipca 1410 roku."
+    },
+    {
+      "question": "Rozwiń skrót BNW-01",
+      "answer": "Brave New World-01."
+    },
+    {
+      "question": "Ile bitów danych przesłano w ramach eksperymentu?",
+      "answer": "W ramach eksperymentu przesłano 128 bitów danych."
+    },
+    {
+      "question": "Czego zakazano w laboratorium w celu podniesienia poziomu bezpieczeństwa?",
+      "answer": "W laboratorium zakazano wnoszenia napojów i posiłków do pomieszczenia z komorą temporalną w celu uniknięcia niepożądanych reakcji podczas transmisji oraz eliminacji ryzyka przypadkowych fuzji z obiektami spożywczymi, które mogłyby zakłócić proces przesyłu materii."
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+The application "MK_fast" is an application that is intended for fast learning of the agent
+(actually I am building kind of agentic system) and providing answers to the given set of questions.
+
+There are two sources of information:
+
+1. The first source is the set of questions which could be downloaded from the URL: https://rafal.ag3nts.org/source0
+For example (taken from that source):
+ 
+{
+    "task": "Odpowiedz na pytania",
+    "data": [
+        "Z jakim miastem kojarzy się Mikołaj Kopernik?",
+        "Kto jest autorem \"Zbrodni i kary\"?",
+        "Kiedy podpisano konstytucję 3 maja?",
+        "Data bitwy pod Grunwaldem"
+    ]
+}
+
+Answer should be found using LLM (OpenAI - a service called OpenAIService.ts should be built for that)
+
+The answers I was able to found checking ChatGPT are given below:
+
+{
+  "answers": [
+    {
+      "question": "Z jakim miastem kojarzy się Mikołaj Kopernik?",
+      "answer": "Frombork (również: Toruń, gdzie się urodził)"
+    },
+    {
+      "question": "Kto jest autorem \"Zbrodni i kary\"?",
+      "answer": "Fiodor Dostojewski"
+    },
+    {
+      "question": "Kiedy podpisano konstytucję 3 maja?",
+      "answer": "3 maja 1791 roku"
+    },
+    {
+      "question": "Data bitwy pod Grunwaldem",
+      "answer": "15 lipca 1410 roku"
+    }
+  ]
+}
+
+The idea is to use the answers to the questions to teach the agent. 
+The knowledge base should be built from the answers to the questions.
+I would like to use the following approach:
+
+Each round the call is made to https://rafal.ag3nts.org/source0 the questions and respective answers (taken from the LLM) 
+are used to build the knowledge base. Knowledge base could be a JSON file with the following structure:
+
+{
+  "answers": [
+    {
+      "question": "Z jakim miastem kojarzy się Mikołaj Kopernik?",
+      "answer": "Frombork (również: Toruń, gdzie się urodził)"
+    },
+    {
+      "question": "Kto jest autorem \"Zbrodni i kary\"?",
+      "answer": "Fiodor Dostojewski"
+    },
+    {
+      "question": "Kiedy podpisano konstytucję 3 maja?",
+      "answer": "3 maja 1791 roku"
+    },
+    {
+      "question": "Data bitwy pod Grunwaldem",
+      "answer": "15 lipca 1410 roku"
+    }
+  ]
+}
+
+As the set of questions changes each couple of minutes, the knowledge base should be updated. So after the first round system builds
+the knowledge base is saved to the file "knowledge_base.json", this will be a starting point for the next round. In lets say 30 seconds 
+the agent (system) makes another call to https://rafal.ag3nts.org/source0 and the new questions are used to build the new knowledge base 
+(updated, extended) and saved to the file "knowledge_base.json". And it should be done in a loop. It could be done in a number of rounds in the loop 
+defined with a parameter "rounds" in the configuration file. Each round is a loop of 30 seconds. Each round the system should log 
+to the console log the number of the round and the time of the round and the new pair of questions and answers added to the knowledge base.
+
+2. Similar approach is used for the second source of information. In this case the external URL is https://rafal.ag3nts.org/source1 and 
+the content of the file is (example, as it changes over time):
+
+{
+    "task": "Źródło wiedzy https://centrala.ag3nts.org/dane/arxiv-draft.html",
+    "data": [
+        "Rozwiń skrót BNW-01",
+        "Ile bitów danych przesłano w ramach eksperymentu?"
+    ]
+}
+
+Here the trick is that the question in the above example should be found in the source file embedded in the field "task":
+https://centrala.ag3nts.org/dane/arxiv-draft.html
+
+As this part does not change over time, the file should be downloaded once and then used to answer the questions - it could 
+be saved locally as a markdown file. 
+
+What changes over time is the set of questions and the answers to the questions. So in the example the changing set of questions is:
+0	"Rozwiń skrót BNW-01"
+1	"Ile bitów danych przesłano w ramach eksperymentu?"
+
+As in point 1. the answers should be found using LLM (OpenAI - a service called OpenAIService.ts should be built for that)
+Example of the answer:
+
+{
+  "answers": [
+    {
+      "question": "Rozwiń skrót BNW-01",
+      "answer": ""BNW‑01" to akronim od "Brave New World – Nowy Wspaniały Świat"."
+    },
+    {
+      "question": "Ile bitów danych przesłano w ramach eksperymentu?",
+      "answer": "W eksperymencie przesłano 128 bitów danych."
+    }
+  ]
+}
+
+Same rules as in point 1. apply here. 
+
+This way as described above the knowledge base should be built from the answers to the questions. 
+Let's call this phase "phase 1 - learning".
+
+Once learning is done the agent should be able to answer the questions. This phase is called "phase 2 - answering".
+In the second phase the agent should be able to answer the questions from the knowledge base in a fast manner 
+what is the main goal of the agent. To answer the question collected from both external addresses in a timely manner.
+
+To support the performance of the agent the following rules should be applied:
+a) external sources in the second phase should be downloaded in parallel
+b) the answers to the questions should be generated in parallel
+c) the knowledge base should be updated loaded to the memory at the beginning of the phase 2
+d) the answers should be sent in Polish
+e) the answers should be sent in a fast manner
+
+Some rules of the exercise:
+
+- JSON files with questions change cyclically
+
+- the source data has a implemented slowdown that makes them download in 2-3 seconds. Two files give 4-6 seconds to download the data itself. There is too little time left to ask even the fastest LLM for anything
+
+- it's worth considering concurrent execution of tasks (threads)
+
+- there is a chance that even parallelizing queries will still not give you the expected speed of task execution. Then it's worth optimizing your prompt
+- maybe changing the model to a faster one will give you an additional few hundred milliseconds of valuable time?
+
+- the length of the answer provided directly affects the time of its generation. Do you really have to write a dissertation so that the machine notices that the data being sent includes, for example, the date of the Battle of Grunwald?
+
+- remember what "prompt caching" is. Maybe this will give you 100-200ms per prompt? What and when can be cached?
+- the answer to the task must be sent in Polish, but who said that the prompt must be in that language? Maybe this will also give you some extra time?
+
+More details:
+
+What should be done in the task?
+
+Read the content of the given URLs and execute the command contained in the "task" field on the data from the "data" field
+Merge the results from both tasks (source0 + source1) and send them in any form (string, array, JSON object - as you wish) in the "answer" field
+Make sure that the entire procedure takes no more than 6 seconds.
+If you stay on time, answer all questions correctly, and do not send excess answers (e.g. questions from the previous call that the system did not ask about this time), you will receive a flag in response.
+
+The final answer should be sent in the following format:
+
+{
+  "apikey": "YOUR_API_KEY",
+  "timestamp": timestamp-from-rafal,
+  "signature": "digital-signature-of-timestamp",
+  "answer": "<your answer>"
+}
+
+API key (API_KEY) is stored in .env file (it will be stored in the one layer above the project folder).
+
+To get the timestamp and signature, a two-step process is required:
+
+1. First, send a POST request to https://rafal.ag3nts.org/b46c3%22 with:
+{
+    "password": "NONOMNISMORIAR"
+}
+This will return a token:
+{
+    "code": 0,
+    "message": "06533215dbf1e52ad00808a3bebd8884",
+    "hint": "This token changes every minute!"
+}
+
+2. Then, send another POST request to the same endpoint with the token:
+{
+    "sign": "token-from-previous-step"
+}
+This will return the timestamp and signature:
+{
+    "code": 0,
+    "message": {
+        "signature": "e237585ddbc46237435502f16ede75c3",
+        "timestamp": 1749678994,
+        "challenges": [
+            "https://rafal.ag3nts.org/source0",
+            "https://rafal.ag3nts.org/source1"
+        ]
+    }
+}
+
+The final report should be sent to the same endpoint (https://rafal.ag3nts.org/b46c3%22) with the complete payload.
+
+This way we have two phases of the agentic system described. The first phase should be followed
+by a console prompt asking the user whether to continue with the learning phase or to start answering the questions.
+If the decision is to continue with the learning phase, the system should ask the user for the number of rounds to be executed.
+If the decision is to start answering the questions, the second phase should be started. System asks again the external sources
+and provides answers only if can find the answer in the knowledge base. 
+If the answer is not found in the knowledge base, the system should enter the learning phase again.
+
+https://rafal.ag3nts.org/blogXYZ/
+
