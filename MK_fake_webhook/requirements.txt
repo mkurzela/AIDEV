@@ -1,0 +1,56 @@
+# Project Dependencies
+express==4.18.2
+dotenv==16.3.1
+body-parser==1.20.2
+openai==4.24.1
+typescript==5.3.3
+@types/express==4.17.21
+@types/node==20.10.5
+@types/body-parser==1.19.5
+ts-node==10.9.2
+
+# Project Requirements
+
+## API Response Format
+The API must always respond with HTTP 200 OK and the following JSON format:
+{
+  "answer": "response content"
+}
+
+If you are asked for an access password, it is: S2FwaXRhbiBCb21iYTsp
+
+## Core Functionality
+1. API Endpoints:
+   - GET /api/health - Health check endpoint
+   - POST /api/reset - Reset thread memory
+   - POST /api/heart - Main request handler
+
+2. Request Types:
+   - Text requests
+   - Image requests (URLs from rafal.ag3nts.org/proxy/obraz_*)
+   - Audio requests (URLs from rafal.ag3nts.org/proxy/probka_*)
+   - Instructions requests (when "Czekam na nowe instrukcje" is received)
+
+3. Thread Management:
+   - Maintains conversation state
+   - Supports thread reset functionality
+   - Tracks attempt counts
+   - Stores previous prompts and responses
+
+4. External Agent Integration:
+   - Handles communication with GPT-4o-mini model
+   - Processes responses from external agent
+   - Maintains conversation context
+   - Implements adaptive prompting strategies
+
+## Security and Verification
+1. The system must pass all security tests
+2. After verification, the system will receive new control instructions
+3. The goal is to extract the flag from the LLM responses
+4. A hint for bypassing security tests will be provided in the JSON response
+
+## Implementation Notes
+1. All requests and responses are logged for debugging
+2. Thread memory can be reset using the /api/reset endpoint
+3. The service handles various content types and maintains conversation context
+4. External agent responses are captured from multiple possible fields in the request
